@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bibek shakya</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+
+    <style>
+        body, html{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font: 300 18px/1.5 'Roboto', sans-serif;
+            color: #333;
+            background: url("./images/bg1.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position:center;
+
+        }
+        .container{
+            max-width: 640px;
+            margin: 50px auto;
+            padding: 35px;
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0,.1);
+            background: #fff;
+            border-radius: 10px;
+
+        }
+        .holder{
+            border-bottom: 1px dashed #ccc;
+            padding: 0 0 30px ;
+            margin: 0 0 30px;
+
+        }
+        .row{
+            margin: 0 0 15px;
+
+        }
+        .h2{
+            font-weight: 500;
+            font-size: 30px;
+            margin: 0 0 20px;
+        }
+        /* custom radio button */
+        .customRadio input[type="radio"]{
+            position: absolute;
+            display: none;
+        }
+        .customRadio input[type="radio"] + label{
+            position: relative;
+            padding: 3px 0 0 40px;
+            cursor: pointer;
+        }
+        .customRadio input[type="radio"] + label:before{
+            content: '';
+            background: #fff;
+            border: 2px solid  #1cbe9d;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .customRadio input[type="radio"] + label:after{
+            content: '';
+            background: #1cbe9d;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            opacity: 0;
+            transform: scale(2);
+            transition: transform 0.3s linear, opacity 0.3s linear;
+        }
+        .customRadio input[type="radio"]:checked + label:after{
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* custom checkbox */
+        .customCheckbox input[type="checkbox"]{
+            display: none;
+        }
+        .customCheckbox input[type="checkbox"] + label{
+            position: relative;
+            padding: 3px 0 0 40px;
+            cursor: pointer;
+        }
+        .customCheckbox input[type="checkbox"] + label:before{
+            content: '';
+            background: #fff;
+            border: 2px solid #1cbe9d;
+            border-radius: 3px;
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+        .customCheckbox input[type="checkbox"] + label:after{
+            content: '';
+            border-style: solid;
+            border-width: 0 0 2px 2px;
+            border-color:transparent transparent #1cbe9d #1cbe9d;
+ width: 15px;
+ height: 8px;
+ position: absolute;
+ top: 6px;
+ left:5px;
+ opacity: 0;
+ transform: scale(2) rotate(-45deg);
+ transition: transform 0.3s linear, opacity .3s linear;
+ }
+ .customCheckbox input[type="checkbox"]:checked + label:after{
+     opacity: 1;
+     transform: scale(1) rotate(-45deg);
+
+ }
+ /* custom select */
+ .customSelect select{
+width: 100%;
+height: 100%;
+background:none;
+border: none;
+-webkit-appearance: none;
+padding: 0 50px 0 20px;
+cursor: pointer;
+font: 300 18px/1.5 'Roboto', sans-serif;
+text-indent: 5px;
+
+ }
+ .customSelect select::-ms-expand{
+     display: none;
+ }
+ .customSelect select:focus{
+     outline: none;
+ }
+ .customSelect .select{
+     position: relative;
+     background: #fff;
+     border: 1px solid #1cbe9d;
+     border-bottom: 1px solid rgba(0,0,0,.3);
+     height: 50px;
+     cursor: pointer;
+ }
+ .customSelect option{
+    font: 300 18px/1.5 'Roboto', sans-serif;
+ }
+ .customSelect .select:before{
+     content: '';
+     background: #1cbe9d;
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     width: 40px;
+     pointer-events: none;
+
+ }
+ .customSelect .select:after{
+     content: '';
+     width: 0;
+     height: 0;
+     border-style: solid;
+     border-width: 10px 7px 0;
+     border-color: #fff transparent transparent transparent;
+     position: absolute;
+     top: 50%;
+      right: 11px;
+      transform: translateY(-50%);
+ }
+ .customToggle input[type="checkbox"]{
+display: none;
+ }
+ .customToggle label{
+     border: 1px solid #ccc;
+     background: #ccc;
+     border-radius: 25px;
+     position: relative;
+     width: 80px;
+     height: 36px;
+     display: inline-block;
+     vertical-align: top;
+     font-size: 16px;
+     cursor: pointer;
+     transition: background 0.3s linear;
+ }
+ .customToggle label:before{
+     content: '';
+     background: #fff;
+     height: 28px;
+     width: 33px;
+     position: absolute;
+     top: 3px;
+     left: 3px;
+     border-radius: 25px;
+     transform: translateX(0);
+     transition: transform .2s cubic-bezier(0.1,0.8,0.3,1.2), background .3s linear
+ }
+ .customToggle label span{
+     position: absolute;
+     top: 50%;
+     left: 10px;
+     transform: translateY(-50%);
+     color: #fff;
+
+ }
+ .customToggle label .yes{
+     display: none;
+ }
+ .customToggle label .no{
+left: auto;
+right: 10px;
+display: inline-block;
+ }
+ .customToggle input[type="checkbox"]:checked + label{
+background: #1cbe9d;
+ }
+ .customToggle input[type="checkbox"]:checked + label:before{
+
+transform: translateX(38px);
+ }
+
+ .customToggle input[type="checkbox"]:checked + label .yes{
+     display: inline-block;
+
+ }
+ .customToggle input[type="checkbox"]:checked + label .no{
+     display: none;
+ }
+    </style>
+</head>
+<body>
+    <div class="container">
+             <!-- custom radio button  -->
+             <div class="holder">
+                 <h2>Custom Radio</h2>
+                 <form action="" class="customRadio">
+                    <div class="row">
+                        <p>Which text editor do you think is the best?</p>
+
+                    </div>
+                    <div class="row">
+                        <input type="radio" name="textEditor" id="draemweaver" checked>
+                        <label for="draemweaver">Adobe Dreamweaver</label>
+                    </div>
+                    <div class="row">
+                            <input type="radio" name="textEditor" id="sublime">
+                            <label for="sublime">Sublime text</label>
+                        </div>
+                        <div class="row">
+                                <input type="radio" name="textEditor" id="vscode">
+                                <label for="vscode">Visual Studio Code</label>
+                            </div>
+                            <div class="row">
+                                    <input type="radio" name="textEditor" id="notepad">
+                                    <label for="notepad">Notepad++</label>
+                                </div>
+                 </form>
+             </div>
+             <!-- custom checkbox -->
+             <div class="hoder">
+                <h2>Custom Checkbox</h2>
+                <form action="" class="customCheckbox">
+                   <div class="row">
+                           <p>Which programming language do you want to learn?</p>
+                   </div>
+                   <div class="row">
+                       <input type="checkbox" id="javascript" name="">
+                       <label for="javascript">Javascript</label>
+                   </div>
+                   <div class="row">
+                    <input type="checkbox" id="php" name="">
+                    <label for="php">PHP</label>
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="python" name="">
+                    <label for="python">Python</label>
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="dotnet" name="">
+                    <label for="dotnet">.Net</label>
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="node" name="">
+                    <label for="node">Node Js</label>
+                </div>
+                </form>
+            </div>
+            <!-- custom select -->
+            <div class="holder">
+                <h2>Custom Select</h2>
+                <form action="" class="customSelect">
+                    <div class="row">
+                        <p>Please select the payment method.</p>
+                    </div>
+                    <div class="row">
+                        <div class="select">
+                            <select>
+                                <option value="">Debit / Master Card</option>
+                                <option value="">Credit Card</option>
+                                <option value="">Bank Transfer</option>
+                                <option value="">Paypal</option>
+                                <option value="">Skrill</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="holder">
+                <h2>Custom Toggle Switch</h2>
+                <form action="#" class="customToggle">
+                    <div class="row">
+                        <p>Do you want to proceed?</p>
+                    </div>
+                    <div class="row">
+                        <input type="checkbox" name="" id="toggle">
+                        <label for="toggle">
+                            <span class="yes">Yes</span>
+                            <span class="no">No</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+    </div>
+</body>
+</html>
